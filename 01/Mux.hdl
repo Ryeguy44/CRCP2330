@@ -15,4 +15,6 @@ CHIP Mux {
 
     PARTS:
     // Put your code here:
+    And(a=a,b=b,out1);
+    And(a=out1,b=sel,out=out);
 }

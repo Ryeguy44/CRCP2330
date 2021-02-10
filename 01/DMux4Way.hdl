@@ -9,7 +9,7 @@
  *                {0, in, 0, 0} if sel == 01
  *                {0, 0, in, 0} if sel == 10
  *                {0, 0, 0, in} if sel == 11
- */
+ **/
 
 CHIP DMux4Way {
     IN in, sel[2];
@@ -19,5 +19,5 @@ CHIP DMux4Way {
     // Put your code here:
     DMux(in=in,sel=sel[1],a=o1,b=o2);
     Dmux(in=o1,sel=sel[0],a=a,b=b);
-    DMux(in=o2,sel=sel[0],a=c,b=d)
+    DMux(in=o2,sel=sel[0],a=c,b=d);
 }

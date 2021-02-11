@@ -14,4 +14,7 @@ CHIP FullAdder {
 
     PARTS:
     // Put you code here:
+    Not(in=a,out=nota);
+    HalfAdder(a=a,b=b,sum=ab,carry=abc);
+    HalfAdder(a=c,b=nota,sum=bac,carry=cab);
 }

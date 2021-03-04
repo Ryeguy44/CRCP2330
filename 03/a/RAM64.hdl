@@ -16,14 +16,13 @@ CHIP RAM64 {
 
     PARTS:
     // Put your code here:
-    Ram8(in=in,address=,load=,out=o1);
-    Ram8(in=in,address=,load=,out=o1);
-    Ram8(in=in,address=,load=,out=o1);
-    Ram8(in=in,address=,load=,out=o1);
-    Ram8(in=in,address=,load=,out=o1);
-    Ram8(in=in,address=,load=,out=o1);
-    Ram8(in=in,address=,load=,out=o1);
-    Ram8(in=in,address=,load=,out=o1);
-    Ram8(in=in,address=,load=,out=o1);
+    Ram8(in=in,address=address,load=load,out=o1);
+    Ram8(in=o1,address=address,load=load,out=o2);
+    Ram8(in=o2,address=address,load=load,out=o3);
+    Ram8(in=o3,address=address,load=load,out=o4);
+    Ram8(in=o4,address=address,load=load,out=o5);
+    Ram8(in=o5,address=address,load=load,out=o6);
+    Ram8(in=o6,address=address,load=load,out=o7);
+    Ram8(in=o7,address=address,load=load,out=o8);
    
 }

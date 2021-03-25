@@ -13,8 +13,27 @@
 
 // Put your code here.
 
-(RESTART)
+
 @SCREEN
 D=A
 @0
 M=D
+
+@KBD
+D=M
+@BLACK
+D;JGT
+@WHITE
+D;JEQ
+
+@KDBCHECK
+0;JUMP
+@1
+M=-1
+@CHANGE
+0;JMP
+
+@1
+M=0
+@CHANGE
+0;JUMP

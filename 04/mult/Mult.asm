@@ -32,13 +32,13 @@ M=D
 D=0
 
 @2
-M=D-M
+M=D+M
 
 @3
-M=M+1
+M=M-1
 D=M
 @LOOP
-D;JEQ
+D;JGT
 
 @END
 0;JMP

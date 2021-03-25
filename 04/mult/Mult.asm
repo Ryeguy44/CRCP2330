@@ -13,28 +13,28 @@
 @2
 M=0
 
-20
+@0
 D=M
 2END
 D;JEQ
 
-21
+@1
 D=M
 2END
 D;JEQ
 
-20
+@0
 D=M
 23
 M=D
 
-21
+@1
 D=0
 
-22
+@2
 M=D-M
 
-23
+@3
 M=M+1
 D=M
 @LOOP

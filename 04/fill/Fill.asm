@@ -26,8 +26,8 @@ D;JGT
 @WHITE
 D;JEQ
 
-@KDBCHECK
-0;JUMP
+@KBDCHECK
+0;JMP
 @1
 M=-1
 @CHANGE
@@ -36,7 +36,7 @@ M=-1
 @1
 M=0
 @CHANGE
-0;JUMP
+0;JMP
 
 @1
 D=M
@@ -58,5 +58,5 @@ A=M
 D;JGT
 
 @RESTART
-0;JUMP
+0;JMP
 

@@ -15,17 +15,17 @@ M=0
 
 @0
 D=M
-2END
+@END
 D;JEQ
 
 @1
 D=M
-2END
+@END
 D;JEQ
 
 @0
 D=M
-23
+@3
 M=D
 
 @1

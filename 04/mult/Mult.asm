@@ -10,3 +10,10 @@
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
 // Put your code here.
+@2
+M=0
+
+20
+D=M
+2END
+D;JEQ

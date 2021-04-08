@@ -46,20 +46,20 @@ CHIP CPU {
     DRegister(in=o2,load=intoA,out=A,out=addressM);
     And(a=instruction,b=instruction,out=AM);
     Mux16(a=A,b=inM,sel=AM,out=AaM);
-    ALU();
-    And();
-    ARegister();
-    And();
-    Not();
-    Not();
-    Nand();
-    Nand();
-    Nand();
-    And();
-    And();
-    ANd():
-    ANd();
-    OR();
-    OR();
-    PC();
+    ALU(x=D,y=AaM,zx=instruction,nx=instruction,zy=instruction,ny=instruction,f=instruction,no=instruction,out=outM,out=outtM,zr=zr,ng=ng);
+    And(a=instruction,b=instruction,out=intoD);
+    ARegister(in=outM,load=intoD,out=D);
+    And(a=instruction,b=instruction,out=write);
+    Not(in=ng,out=pos);
+    Not(in=zr,out=notzr);
+    Nand(a=instruction,b=instruction,out=o2);
+    Nand(a=pos,b=notzr,out=posnotzr);
+    Nand(a=o2,b=posnotzr,out=o3);
+    And(a=instruction,b=instruction,out=o4);
+    And(a=o4,b=zr,out=o5);
+    ANd(a=intstruction,b=instruction,out=o6):
+    ANd(a=o6,b=ng,out=o7);
+    OR(a=o3,b=o5,out=o8);
+    OR(a=o7,b=o8,out=ol);
+    PC(in=A,load=ol,inc=true,reset=reset,out=pc);
 }

@@ -40,4 +40,26 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+    Not();
+    Mux16();
+    Or();
+    DRegister();
+    And();
+    Mux16();
+    ALU();
+    And();
+    ARegister();
+    And();
+    Not();
+    Not();
+    Nand();
+    Nand();
+    Nand();
+    And();
+    And();
+    ANd():
+    ANd();
+    OR();
+    OR();
+    PC();
 }

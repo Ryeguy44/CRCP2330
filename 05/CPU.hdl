@@ -54,7 +54,7 @@ CHIP CPU {
     And(a=instruction[15],b=instruction[4],out=intoD);
     DRegister(in=outtM,load=intoD,out=D);
 
-    And(a=instruction[15],b=instruction[3],out=write);
+    And(a=instruction[15],b=instruction[3],out=writeM);
 
     Not(in=ng,out=pos);
     Not(in=zr,out=notzr);
@@ -65,7 +65,7 @@ CHIP CPU {
     And(a=instruction[15],b=instruction[1],out=o5);
     And(a=o5,b=zr,out=o6);
 
-    And(a=intstruction[15],b=instruction[2],out=o7):
+    And(a=instruction[15],b=instruction[2],out=o7);
     And(a=o7,b=ng,out=o8);
 
     Or(a=o4,b=o6,out=o9);

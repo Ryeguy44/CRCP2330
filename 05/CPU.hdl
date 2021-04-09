@@ -42,24 +42,34 @@ CHIP CPU {
     // Put your code here:
     Not(in=instruction[15],out=o1);
     Mux16(a=outtM,b=instruction,sel=o1,out=o2);
+
     Or(a=o1,b=instruction[5],out=intoA);
     ARegister(in=o2,load=intoA,out=A,out[0..14]=addressM);
+
     And(a=instruction[15],b=instruction[12],out=AM);
     Mux16(a=A,b=inM,sel=AM,out=AaM);
+
     ALU(x=D,y=AaM,zx=instruction[11],nx=instruction[10],zy=instruction[9],ny=instruction[8],f=instruction[7],no=instruction[6],out=outtM,out=outM,zr=zr,ng=ng);
+
     And(a=instruction[15],b=instruction[4],out=intoD);
     DRegister(in=outtM,load=intoD,out=D);
+
     And(a=instruction[15],b=instruction[3],out=write);
+
     Not(in=ng,out=pos);
     Not(in=zr,out=notzr);
-    And(a=instruction[15],b=instruction[0],out=o2);
+    And(a=instruction[15],b=instruction[0],out=o3);
     And(a=pos,b=notzr,out=posnotzr);
-    And(a=o2,b=posnotzr,out=o3);
-    And(a=instruction[15],b=instruction[1],out=o4);
-    And(a=o4,b=zr,out=o5);
-    And(a=intstruction[15],b=instruction[2],out=o6):
-    And(a=o6,b=ng,out=o7);
-    Or(a=o3,b=o5,out=o8);
-    Or(a=o7,b=o8,out=ol);
+    And(a=o3,b=posnotzr,out=o4);
+
+    And(a=instruction[15],b=instruction[1],out=o5);
+    And(a=o5,b=zr,out=o6);
+
+    And(a=intstruction[15],b=instruction[2],out=o7):
+    And(a=o7,b=ng,out=o8);
+
+    Or(a=o4,b=o6,out=o9);
+    Or(a=o8,b=o9,out=ol);
+
     PC(in=A,load=ol,inc=true,reset=reset,out[0..14]=pc);
 }

@@ -1,0 +1,62 @@
+class InputUtil {
+	 int ir,ic;
+
+	  init() {
+		 ir = 1;
+		 ic = 1;
+		return;
+	}
+
+	  eraseMessage() {
+		 String s;
+		 Output.moveCursor(ir,ic);
+		 s = "                                                 ";
+		 Output.printString(s);
+		 s.dispose();
+		return;
+	}
+
+	  showMessage(String s) {
+		 InputUtil.eraseMessage();
+		 Output.moveCursor(ir,ic);
+		 Output.printString(s);
+		 s.dispose();
+		return;
+	}
+	
+	// reads only valid inputs!
+	// returns 0 for quit and 1 to 9 for moves!
+	 int readInput(String s) {
+		 char c;
+		 int choice;
+		 InputUtil.eraseMessage();		
+		while(true) {
+			 Output.moveCursor(ir,ic);
+			 Output.printString(s);
+			 c = Keyboard.readChar();
+			// 48 to 57
+			if((c>47) & (c<58)) {
+				 s.dispose();
+				return c-48;
+			}
+		}
+		return 0;// Never reach here!
+	}
+	
+	 int waitForZeroOrOne(String s) {
+		 char c;
+		 int choice;
+		 InputUtil.eraseMessage();		
+		while(true) {
+			 Output.moveCursor(ir,ic);
+			 Output.printString(s);
+			 c = Keyboard.readChar();
+			// 48 to 57
+			if((c>47) & (c<50)) {
+				 s.dispose();
+				return c-48;
+			}
+		}
+		return 0;// Never reach here!
+	}
+}

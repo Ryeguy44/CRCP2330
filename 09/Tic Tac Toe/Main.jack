@@ -1,0 +1,12 @@
+class Main {
+
+	 main() {
+		Screen.clearScreen();
+		
+		TicTacToeGame.init();
+		TicTacToeGame.startGame();
+		
+		return;
+	}
+
+}

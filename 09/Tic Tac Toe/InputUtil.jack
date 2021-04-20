@@ -1,62 +1,62 @@
 class InputUtil {
-	 int ir,ic;
+	static int ir,ic;
 
-	  init() {
-		 ir = 1;
-		 ic = 1;
+	function void init() {
+		let ir = 1;
+		let ic = 1;
 		return;
 	}
 
-	  eraseMessage() {
-		 String s;
-		 Output.moveCursor(ir,ic);
-		 s = "                                                 ";
-		 Output.printString(s);
-		 s.dispose();
+	function void eraseMessage() {
+		var String s;
+		do Output.moveCursor(ir,ic);
+		let s = "                                                 ";
+		do Output.printString(s);
+		do s.dispose();
 		return;
 	}
 
-	  showMessage(String s) {
-		 InputUtil.eraseMessage();
-		 Output.moveCursor(ir,ic);
-		 Output.printString(s);
-		 s.dispose();
+	function void showMessage(String s) {
+		do InputUtil.eraseMessage();
+		do Output.moveCursor(ir,ic);
+		do Output.printString(s);
+		do s.dispose();
 		return;
 	}
 	
 	// reads only valid inputs!
 	// returns 0 for quit and 1 to 9 for moves!
-	 int readInput(String s) {
-		 char c;
-		 int choice;
-		 InputUtil.eraseMessage();		
+	function int readInput(String s) {
+		var char c;
+		var int choice;
+		do InputUtil.eraseMessage();		
 		while(true) {
-			 Output.moveCursor(ir,ic);
-			 Output.printString(s);
-			 c = Keyboard.readChar();
+			do Output.moveCursor(ir,ic);
+			do Output.printString(s);
+			let c = Keyboard.readChar();
 			// 48 to 57
 			if((c>47) & (c<58)) {
-				 s.dispose();
+				do s.dispose();
 				return c-48;
 			}
 		}
-		return 0;// Never reach here!
+		return 0;
 	}
 	
-	 int waitForZeroOrOne(String s) {
-		 char c;
-		 int choice;
-		 InputUtil.eraseMessage();		
+	function int waitForZeroOrOne(String s) {
+		var char c;
+		var int choice;
+		do InputUtil.eraseMessage();		
 		while(true) {
-			 Output.moveCursor(ir,ic);
-			 Output.printString(s);
-			 c = Keyboard.readChar();
+			do Output.moveCursor(ir,ic);
+			do Output.printString(s);
+			let c = Keyboard.readChar();
 			// 48 to 57
 			if((c>47) & (c<50)) {
-				 s.dispose();
+				do s.dispose();
 				return c-48;
 			}
 		}
-		return 0;// Never reach here!
+		return 0;
 	}
 }

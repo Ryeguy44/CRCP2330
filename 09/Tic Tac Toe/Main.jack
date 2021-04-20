@@ -1,10 +1,10 @@
 class Main {
 
-	 main() {
-		Screen.clearScreen();
+	function void main() {
+		do Screen.clearScreen();
 		
-		TicTacToeGame.init();
-		TicTacToeGame.startGame();
+		do TicTacToeGame.init();
+		do TicTacToeGame.startGame();
 		
 		return;
 	}

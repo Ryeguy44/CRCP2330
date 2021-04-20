@@ -278,7 +278,7 @@ class TicTacToeGame {
 		do Output.moveCursor(20,16);
 		do Output.printString("Tic Tac Toe in Jack Language");
 		do Output.moveCursor(21,22);
-		do Output.printString("By Jayson Joseph");
+		do Output.printString("By Riley Scanlan");
 		return;
 	}
 	

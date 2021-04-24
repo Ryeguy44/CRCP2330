@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import os, sys
 
 comp = {
@@ -53,8 +52,7 @@ jump = {
     "JLE": "110",
     "JMP": "111"
     }
-# table of symbols used in assembly code, initialized to include
-# standard ones
+
 table = {
     "SP": 0,
     "LCL": 1,
@@ -95,7 +93,6 @@ def normalize(line):
   return line
 
   def addVariable(label):
-# allocates a memory location for new variables
 
   global variableCursor
   table[label] = variableCursor
@@ -104,8 +101,6 @@ def normalize(line):
 
 
 def aTranslate(line):
-# translates a symbolic a-instruction into an int (if necessary)
-# then translates that into a binary machine instruction
 
   if line[1].isalpha():
     label = line[1:-1]
@@ -117,4 +112,60 @@ def aTranslate(line):
   bValue = bin(aValue)[2:].zfill(16)
   return bValue
  
+ def cTranslate(line):
+
+  line = normalize(line)
+  temp = line.split("=")
+  destCode = dest.get(temp[0], "destFAIL")
+  temp = temp[1].split(";")
+  compCode = comp.get(temp[0], "compFAIL")
+  jumpCode = jump.get(temp[1], "jumpFAIL")
+  return compCode, destCode, jumpCode
+
+
+def translate(line):
+
+  if line[0] == "@":
+    return aTranslate(line)
+  else:
+    codes = cTranslate(line)
+    return "111" + codes[0] + codes[1] + codes[2]
+
+
+def firstPass():
+
+  infile = open(root + ".asm")
+  outfile = open(root + ".tmp", "w")
+
+  lineNumber = 0
+  for line in infile:
+    sline = strip(line)
+    if sline != "":
+      if sline[0] == "(":
+        label = sline[1:-1]
+        table[label] = lineNumber
+        sline = ""
+      else:
+        lineNumber += 1
+        outfile.write(sline + "\n")
+
+  infile.close()
+  outfile.close()
+
+
+def assemble():
+
+  infile = open(root + ".tmp")
+  outfile = open(root + ".hack", "w")
+
+  for line in infile:
+    tline = translate(line)
+    outfile.write(tline + "\n")
+
+  infile.close()
+  outfile.close()
+  os.remove(root + ".tmp")
+
+firstPass()
+assemble()
 

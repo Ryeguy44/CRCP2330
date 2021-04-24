@@ -53,3 +53,44 @@ jump = {
     "JLE": "110",
     "JMP": "111"
     }
+# table of symbols used in assembly code, initialized to include
+# standard ones
+table = {
+    "SP": 0,
+    "LCL": 1,
+    "ARG": 2,
+    "THIS": 3,
+    "THAT": 4,
+    "SCREEN": 16384,
+    "KBD": 24576,
+    }
+
+for i in range(0,16):
+  label = "R" + str(i)
+  table[label] = i
+
+
+variableCursor = 16   
+root = sys.argv[1]     
+
+
+def strip(line):
+
+  char = line[0]
+  if char == "\n" or char == "/":
+    return ""
+  elif char == " ":
+    return strip(line[1:])
+  else:
+    return char + strip(line[1:])
+
+
+def normalize(line):
+
+  line = line[:-1]
+  if not "=" in line:
+    line = "null=" + line
+  if not ";" in line:
+    line = line + ";null"
+  return line
+

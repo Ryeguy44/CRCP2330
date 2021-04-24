@@ -94,3 +94,27 @@ def normalize(line):
     line = line + ";null"
   return line
 
+  def addVariable(label):
+# allocates a memory location for new variables
+
+  global variableCursor
+  table[label] = variableCursor
+  variableCursor += 1
+  return table[label]
+
+
+def aTranslate(line):
+# translates a symbolic a-instruction into an int (if necessary)
+# then translates that into a binary machine instruction
+
+  if line[1].isalpha():
+    label = line[1:-1]
+    aValue = table.get(label, -1)
+    if aValue == -1:
+      aValue = addVariable(label)
+  else:
+    aValue = int(line[1:])
+  bValue = bin(aValue)[2:].zfill(16)
+  return bValue
+ 
+
